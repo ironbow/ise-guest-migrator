@@ -11,20 +11,20 @@ Should be run using Python 3.6+.
 **Warning**: There is no confirmation or rollback options, use at your own risk.
 
 # Install
-Clone (or download):  
+**Clone (or download)**:  
 
 `git clone https://github.com/ironbow/ise-guest-migrator.git`
 
-Install requirements: 
+**Install requirements**: 
 
 `pip install -r requirements.txt`
 **Note**: Depending on the system, you may need to specify `pip3` for Python3's PIP instance.
 
-Configure: 
+**Configure**: 
 
 Edit the `config.template.ini` to use appropriate values, and rename to `config.ini`.
 
-Run:
+**Run**:
 
 * Run with defaults: `python migrate-guests.py`
 * Run with a sponsor username filter: `python migrate-guests.py -f john.doe`
