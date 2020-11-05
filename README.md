@@ -6,6 +6,8 @@ This was tested on ISE 2.7, but should work up to ISE 3.0 and back to ISE 2.2 or
 
 The ISE ERS API must be enabled, and a sponsor account must have API access. [Please see here for more information](https://community.cisco.com/t5/security-documents/ise-guest-sponsor-api-tips-amp-tricks/ta-p/3636773).
 
+Should be run using Python 3.6+.
+
 **Warning**: There is no confirmation or rollback options, use at your own risk.
 
 # Install
@@ -16,6 +18,7 @@ Clone (or download):
 Install requirements: 
 
 `pip install -r requirements.txt`
+**Note**: Depending on the system, you may need to specify `pip3` for Python3's PIP instance.
 
 Configure: 
 
@@ -26,6 +29,8 @@ Run:
 * Run with defaults: `python migrate-guests.py`
 * Run with a sponsor username filter: `python migrate-guests.py -f john.doe`
 * Run with custom config file: `python migrate-guests.py -c /path/to/my/config.ini`
+
+**Note**: Depending on the system, you may need to specify `python3`, `python3.7`, etc. for Python3.
 
 # Caveats
 
