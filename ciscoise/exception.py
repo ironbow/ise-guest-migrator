@@ -15,10 +15,14 @@ class ISEAPIError(Exception):
 
     def __str__(self):
         if self.code:
-            return "{}: {}".format(self.code, self.message)
+            return f"{self.message}"
         return self.message
 
 
 # Specific exception classes
 class SponsorAuthMissing(ISEAPIError):
+    pass
+
+
+class ObjectAlreadyExists(ISEAPIError):
     pass

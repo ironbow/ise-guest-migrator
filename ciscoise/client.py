@@ -1,4 +1,5 @@
 from ciscoise.session import ISESession
+from .exception import *
 from datetime import datetime
 import json
 import string
@@ -56,8 +57,13 @@ class ISE:
                 "customFields": {}
             }
         }"""
-
-        return self.ise.post("guestuser", payload)
+        try:
+            return self.ise.post("guestuser", payload)
+        except ISEAPIError as e:
+            if "username already exists" in e.message:
+                raise ObjectAlreadyExists(
+                    message="Username already exists.", response=e.response
+                )
 
     def newGuestFromExisting(
         self, payload, guest_type: str = None, portal_id: str = None, test: bool = False
@@ -83,11 +89,14 @@ class ISE:
             payload["GuestUser"]["portalId"] = portal_id
 
         # If test specified, append random chars to username
-        rand_str = "".join(random.choices(string.ascii_uppercase + string.digits, k=3))
+        if test:
+            rand_str = "".join(
+                random.choices(string.ascii_uppercase + string.digits, k=3)
+            )
 
-        payload["GuestUser"]["guestInfo"]["userName"] = (
-            payload["GuestUser"]["guestInfo"]["userName"] + rand_str
-        )
+            payload["GuestUser"]["guestInfo"]["userName"] = (
+                payload["GuestUser"]["guestInfo"]["userName"] + rand_str
+            )
 
         return payload
 

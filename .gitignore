@@ -19,3 +19,5 @@
 .tox/
 .mypy_cache/
 venv/
+
+config.ini
